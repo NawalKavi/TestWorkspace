@@ -1,5 +1,6 @@
 # Initialising.
 from pygame import *
+
 init()
 
 # Game window parameters.
@@ -10,7 +11,8 @@ display.set_caption("HE CAN'T KEEP GETTING AWAY WITH THIS")
 
 # Dictionary for images.
 imageDictionary = {
-"frogWin" : transform.scale(image.load("Images//Crowned Frog.png"), (40, 40))
+    "frogWin": transform.scale(image.load("Images//Crowned Frog.png"), (40, 40))
+
 }
 
 # Game loop.
