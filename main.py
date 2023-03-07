@@ -8,6 +8,11 @@ height = 700
 mainWindow = display.set_mode((width, height))
 display.set_caption("HE CAN'T KEEP GETTING AWAY WITH THIS")
 
+# Dictionary for images.
+imageDictionary = {
+"frogWin" : transform.scale(image.load("Images//Crowned Frog.png"), (40, 40))
+}
+
 # Game loop.
 oneSecondTick = 0
 gameRunning = True
