@@ -8,7 +8,7 @@ height = 700
 mainWindow = display.set_mode((width, height))
 display.set_caption("HE CAN'T KEEP GETTING AWAY WITH THIS")
 
-# Importing images.
+# Images.
 imageDictionary = {
     "frog": transform.scale(image.load("Images//Frog.png"), (30, 30)),
     "frogWin": transform.scale(image.load("Images//Crowned Frog.png"), (40, 40)),
@@ -16,10 +16,15 @@ imageDictionary = {
     "redCar": transform.scale(image.load("Images//Red Car.png"), (50, 50))
 }
 
-# Playing music.
-widePutin = mixer.Sound("Audio//Song For Denise (Perfect Loop).mp3")
-breakingBad = mixer.Sound("Audio//Breaking Bad (Extended Theme).mp3")
-mixer.Sound.play(widePutin)
+# Audio.
+audioDictionary = {
+    "widePutin": mixer.Sound("Audio//Song For Denise (Perfect Loop).mp3"),
+    "breakingBad": mixer.Sound("Audio//Breaking Bad (Extended Theme).mp3")
+}
+
+# Background music decider.
+mixer.Sound.play(audioDictionary["widePutin"])
+pass
 
 # Game loop.
 oneSecondTick = 0
