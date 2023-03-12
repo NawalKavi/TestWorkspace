@@ -24,11 +24,13 @@ audioDictionary = {
 
 # Background music decider.
 mixer.Sound.play(audioDictionary["widePutin"])
-pass
 
 # Blitting or something.
-def blitImage(image, x, y):
-    mainWindow.blit(image, (x, y))
+def blitImage(image, xCords, yCords):
+    mainWindow.blit(image, (xCords, yCords))
+
+xCords =
+yCords = 
 
 # Game loop.
 oneSecondTick = 0
@@ -38,6 +40,17 @@ while gameRunning == True:
         # Quits game.
         if gameEvent.type == QUIT:
             gameRunning = False
+        # Handles keyboard movements.
+        if gameEvent.type == KEYDOWN:
+            if gameEvent.key == K_UP:
+                pass
+            elif gameEvent.key == K_DOWN:
+                pass
+            elif gameEvent.key == K_LEFT:
+                pass
+            elif gameEvent.key == K_RIGHT:
+                pass
     mainWindow.fill((0, 0, 0))
+    # Always blit images after drawing the initial background, because otherwise it'll just cover the images.
     blitImage(imageDictionary["frog"], width * 0.45, height * 0.8)
     display.flip()
