@@ -6,7 +6,7 @@ init()
 width = 1200
 height = 700
 mainWindow = display.set_mode((width, height))
-display.set_caption("HE CAN'T KEEP GETTING AWAY WITH THIS")
+display.set_caption("The Chronicles of Big Poppa")
 
 # Images.
 imageDictionary = {
@@ -22,15 +22,12 @@ audioDictionary = {
     "breakingBad": mixer.Sound("Audio//Breaking Bad (Extended Theme).mp3")
 }
 
-# Background music decider.
-mixer.Sound.play(audioDictionary["widePutin"])
+# Music whatnot.
+mixer.Sound.play(audioDictionary["breakingBad"])
 
 # Blitting or something.
 def blitImage(image, xCords, yCords):
     mainWindow.blit(image, (xCords, yCords))
-
-xCords =
-yCords = 
 
 # Game loop.
 oneSecondTick = 0
@@ -40,16 +37,21 @@ while gameRunning == True:
         # Quits game.
         if gameEvent.type == QUIT:
             gameRunning = False
-        # Handles keyboard movements.
+        # Handles player movements.
         if gameEvent.type == KEYDOWN:
             if gameEvent.key == K_UP:
                 pass
-            elif gameEvent.key == K_DOWN:
+            if gameEvent.key == K_DOWN:
                 pass
-            elif gameEvent.key == K_LEFT:
+            if gameEvent.key == K_LEFT:
                 pass
-            elif gameEvent.key == K_RIGHT:
+            if gameEvent.key == K_RIGHT:
                 pass
+            # Background music control.
+            if gameEvent.key == K_p:
+                mixer.pause()
+            if gameEvent.key == K_u:
+                mixer.unpause()
     mainWindow.fill((0, 0, 0))
     # Always blit images after drawing the initial background, because otherwise it'll just cover the images.
     blitImage(imageDictionary["frog"], width * 0.45, height * 0.8)
