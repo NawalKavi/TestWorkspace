@@ -10,10 +10,10 @@ display.set_caption("The Chronicles of Big Poppa")
 
 # Images.
 imageDictionary = {
-    "frog": transform.scale(image.load("Images//Frog.png"), (40, 40)),
-    "frogWin": transform.scale(image.load("Images//Crowned Frog.png"), (60, 60)),
-    "blueBike": transform.scale(image.load("Images//Blue Bike.png"), (70, 70)),
-    "redCar": transform.scale(image.load("Images//Red Car.png"), (70, 70))
+    "frog": transform.scale(image.load("Images//Frog.png"), (50, 50)),
+    "frogWin": transform.scale(image.load("Images//Crowned Frog.png"), (70, 70)),
+    "blueBike": transform.scale(image.load("Images//Blue Bike.png"), (100, 100)),
+    "redCar": transform.scale(image.load("Images//Red Car.png"), (100, 100))
 }
 
 # Audio.
@@ -23,14 +23,34 @@ audioDictionary = {
 }
 
 # Music whatnot.
-mixer.Sound.play(audioDictionary["breakingBad"])
+mixer.Sound.play(audioDictionary["widePutin"])
+
+# Finds the top-left corner coordinates of an image.
+def centreImageX(xTarget, xSize):
+    return xTarget - xSize / 2
+
+def centreImageY(yTarget, ySize):
+    return yTarget - ySize / 2
+
+def centreImageXFrog(xTargetFrog, xSizeFrog):
+    return xTargetFrog - xSizeFrog / 2
+
+def centreImageY(yTargetFrog, ySizeFrog):
+    return yTargetFrog - ySizeFrog / 2
+
+def centreImageYFrog(yTargetFrog, ySizeFrog):
+    return yTargetFrog - ySizeFrog / 2
 
 # Blitting or something.
-def blitImage(image, xCords, yCords):
-    mainWindow.blit(image, (xCords, yCords))
+def blitImage(image, xyValues):
+    mainWindow.blit(image, xyValues)
+
+frogX = centreImageXFrog(600, 40)
+frogY = centreImageYFrog(600, 40)
+xChangeFrog = 0
+yChangeFrog = 0
 
 # Game loop.
-oneSecondTick = 0
 gameRunning = True
 while gameRunning == True:
     for gameEvent in event.get():
@@ -40,19 +60,21 @@ while gameRunning == True:
         # Handles player movements.
         if gameEvent.type == KEYDOWN:
             if gameEvent.key == K_UP:
-                pass
+                yChangeFrog -= 25
             if gameEvent.key == K_DOWN:
-                pass
+                yChangeFrog += 25
             if gameEvent.key == K_LEFT:
-                pass
+                xChangeFrog -= 25
             if gameEvent.key == K_RIGHT:
-                pass
+                xChangeFrog += 25
             # Background music control.
             if gameEvent.key == K_p:
                 mixer.pause()
             if gameEvent.key == K_u:
                 mixer.unpause()
+
     mainWindow.fill((0, 0, 0))
     # Always blit images after drawing the initial background, because otherwise it'll just cover the images.
-    blitImage(imageDictionary["frog"], width * 0.45, height * 0.8)
+    blitImage(imageDictionary["frog"], ((centreImageXFrog(600, 40) + xChangeFrog), (centreImageYFrog(600, 40) + yChangeFrog)))
+    # Renders the game.
     display.flip()
